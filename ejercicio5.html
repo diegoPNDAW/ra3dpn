@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Resolución, formatos de pantalla, idiomas y protocolos.</h1>
+    <script>
+
+        //1. TIPO DISPOSITIVO 
+
+        //utilizamos el objeto window.innerWidth para leer el ancho del navegador.
+        let anchoPantalla = window.innerWidth
+
+        //creamos una simple estructura condicional
+        if (anchoPantalla < 768) {
+            document.write("El tamaño de pantalla corresponde a un móvil<br>");
+        } else if (anchoPantalla >= 768 && anchoPantalla < 1024) {
+            document.write("El tamaño de pantalla corresponde a una tablet<br>");
+        } else {
+            document.write("El tamaño de pantalla corresponde a un escritorio<br>");
+        }
+
+        //2. RESOLUCIÓN DE PANTALLA
+
+        //declaramos ambos objetos y luego imprimimos.
+        anchoPantalla = window.innerWidth;
+        let altoPantalla = window.innerHeight;
+
+        document.write(`La resolución de pantalla es de ${anchoPantalla} x ${altoPantalla}<br>`);
+
+        //3. HORIZONTAL O VERTICAL
+
+        //realizamos el condicional
+        if (anchoPantalla >= altoPantalla) {
+            document.write("El formato de pantalla es horizontal<br>");
+        } else {
+            document.write("El formato de pantalla es vertical<br>");
+        }
+
+        //4. IDIOMA PRINCIPAL
+
+        //obtenemos el idioma principal del navegador.
+
+        let idiomaNavegador = navigator.language;
+
+        //TOMAMOS LOS DOS PRIMEROS CARACTERES CON SUBSTRING Y PASAMOS A MINÚSCULAS AUNQUE NO HARÍA FALTA.
+        let idiomaPrincipal = idiomaNavegador.substring(0, 2).toLowerCase();
+
+        document.write(`El idioma principal es: ${idiomaPrincipal}<br>`)
+        //compruebo que realmente esté imprimiendo el idioma del navegador
+        console.log(idiomaNavegador);
+
+
+        //5. PROTOCOLO SEGURO
+
+        //declaramos variable con objeto
+        let protocoloActual = window.location.protocol;
+
+        //lo convertimos en booleeano con un valor (true)
+        let conexionSegura = (protocoloActual == "https:");
+
+        // y comprobamos mediante operador ternario
+        let protocoloSeguro = conexionSegura ? "https:" : "http:";
+
+        //imprimimos resultado
+        document.write(`El protocolo actual es: ${protocoloSeguro}<br>`);
+        //compruebo que se haya convertido a booleano
+        console.log(typeof conexionSegura)
+
+
+
+    </script>
+</body>
+</html>

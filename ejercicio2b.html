@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //creamos la función descompresion
+        function descompresion(cadena) {
+
+            //reemplazamos los ? por espacios vacíos
+            cadena = cadena.replaceAll("?", " ");
+
+            //variable donde acumularemos el resultado
+            let resultado = "";
+
+            //creamos bucle que irá recorriendo la cadena
+            for (let i = 0; i < cadena.length; i++) {
+                let caracter = cadena.charAt(i);
+                
+                //comprobamos si el caracter es un número y que no sea un espacio
+                if(!isNaN(caracter) && caracter !== " "){
+                    let repeticiones = parseInt(caracter);
+                    let letra = cadena.charAt(i+1);
+
+                    resultado += letra.repeat(repeticiones);
+
+                    i++ //saltamos de letra procesada
+
+                }else{
+                    //si no es un numero es una letra suelta o espacio, y añadimos.
+                    resultado += caracter;
+                }
+            }
+            //devolvemos el texto final cuando el bucle concluye todas las vueltas
+            return resultado;
+        }
+        //por ultimo pedimos datos y ejecutamos la función
+        let cadena = prompt("Introduzca un texto");
+        let textoDesComprimido = descompresion(cadena);
+
+        console.log("Resultado: ", textoDesComprimido);
+        document.write("Resultado: ", textoDesComprimido);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+<body>
+    <h1>Ejercicio de compresión</h1>
+    <script>
+        //creamos la función compresion
+        function compresion(cadena) {
+
+            //iniciamos numero en false
+            let tieneNumero = false;
+
+            //recorremos la cadena caracter a caracter:
+            for (let i = 0; i < cadena.length; i++) {
+                let caracter = cadena.charAt(i);
+
+                //si no es un espacio pero sí es un número:
+                if (caracter !== " " && !isNaN(caracter)) {
+                    tieneNumero = true;
+                    break;//rompemos el bucle al encontrar un número
+                }
+            }
+            //Si tiene números (true), devolvemos el error.
+            if (tieneNumero) {
+                return "Error: la cadena contiene números";
+            }
+
+            //reemplazamos los espacios vacíos por "?"
+            cadena = cadena.replaceAll(" ", "?");
+
+
+            //Apartado A (Compresión)
+
+            //variable donde guardaremos el texto comprimido final
+            let resultado = "";
+            let contarIguales = 1;
+
+            //creamos bucle que irá recorriendo la cadena
+            for (let i = 0; i < cadena.length; i++) {
+                let actual = cadena.charAt(i);
+                let siguiente = cadena.charAt(i + 1);
+
+                //condicional que cuenta dos letras consecutivas coinciden
+                if (actual === siguiente) {
+                    contarIguales++;
+
+                } else {
+                    if (contarIguales === 1) {
+                        resultado += actual; //si no se repite la letra, concatenamos directamente a resultado
+                    } else if (contarIguales > 1) {
+                        resultado += contarIguales + actual //si se repite varias veces, concatenamos número de repeticiones y letra
+                    }
+
+                    contarIguales = 1 //reiniciamos el contador para la siguiente vuelta
+
+                }
+            }
+            //devolvemos el texto final cuando el bucle concluye todas las vueltas
+            return resultado;
+        }
+        //por ultimo pedimos datos y ejecutamos la función
+        let cadena = prompt("Introduzca un texto");
+        let textoComprimido = compresion(cadena);
+
+        console.log("Resultado: ", textoComprimido);
+        document.write("Resultado: ", textoComprimido);
+
+    </script>
+</body>
+</html>

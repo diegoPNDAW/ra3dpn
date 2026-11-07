@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+<body>
+    <h1>Redireccionamiento a nueva ventana</h1>
+    <script>
+
+        //declaramos variables y los 2 objetos de tipo fechas.
+        let hoy = new Date();
+        let finAnio = new Date("2026-12-31")
+
+
+        //restamos la diferencia entre fecha destino y hoy (será en milisegundos)
+        let diferenciaMs = finAnio - hoy
+
+        //calculamos los milisegundos por día
+        let MsDia = 1000 * 60 * 60 * 24;
+
+        //dividimos la diferencia entre fechas entre los milisegundos en un día para obtener un día, y redondeamos hacia abajo para quitar decimales
+        let diasRestantes = Math.floor(diferenciaMs / MsDia);
+
+        //pasamos la fecha de hoy a string para imprimir en pantalla.
+        let hoyString = hoy.toLocaleDateString();
+
+        //abrimos la ventana de 600x400
+        let ventana = window.open("","", "with=600, heigh=400");
+
+
+        // Imprimimos los resultados en la nueva ventana
+        ventana.document.write("<h2>Cuenta atrás para fin de año</h2><br>");
+        ventana.document.write(`Hoy es ${hoyString} y faltan ${diasRestantes} días para fin de año`)
+   
+
+
+
+    </script>
+    
+</body>
+</html>

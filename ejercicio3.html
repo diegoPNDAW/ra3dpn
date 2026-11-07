@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+<body>
+    <h1>Selección de idiomas</h1>
+    <script>
+    
+        //Comprobamos si es la primera vez (si no hay idioma guardado)
+        if (!localStorage.idioma) {
+                //pedimos el idioma mediante prompt y aseguramos pasarlo a mayúsculas
+                let idioma = prompt("Escribe EN para idioma inglés o ES para idioma Español").toUpperCase();
+
+
+                //mientras los valores no sean ES o EN, repetimos e informamos del error.
+                while (idioma !== "EN" && idioma !== "ES") {
+                    alert("Error, debes introducir EN o ES");
+                    idioma = prompt("Escribe EN para idioma inglés o ES para idioma Español").toUpperCase();
+                }
+
+                //Si salimos del bucle, sabemos que es ES o EN y guardamos.
+                localStorage.idioma = idioma;
+            }
+
+            //realizamos los condicionales fuera del if para asegurar que funcionen en la segunda visita.
+            if (localStorage.idioma == "EN") {
+                document.write("Hellow");
+            } else if (localStorage.idioma == "ES") {
+                document.write("Hola")
+            }
+        
+    </script>
+    
+</body>
+</html>
